@@ -6,7 +6,7 @@ namespace ToDoList.Models
   {
     // below: declares a constructor that takes a description as a parameter and creates a Description property.
     public string Description { get; set; }
-    private static List<Item> _instance = new List<Item> {}; 
+    private static List<Item> _instances = new List<Item> {}; 
     // ^ _instance is a new variable to the class Item 
     // ^^ best practices of encapsulation = this var private --> needs to be _camelCase  
     // ^^^ variable is **static** b/c info held is related to *entire* class, not just a single instance of Item

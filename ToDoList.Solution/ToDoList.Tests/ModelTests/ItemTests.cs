@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ToDoList.Models;
 using System.Collections.Generic;
+using ToDoList.Models;
+using System;
 
 namespace ToDoList.Tests
 {
@@ -68,6 +69,26 @@ namespace ToDoList.Tests
       //Assert
       CollectionAssert.AreEqual(newList, result);
       // ^ result should be equal to newList - confirming our GetAll() method returns a list sucessfully.
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnsItems_ItemList()
+    {
+      //Arrange
+      string description01 = "Walk the dog";
+      string description02 = "Wash the dishes";
+      Item newItem1 = new Item(description01);
+      Item newItem2 = new Item(description02);
+      List<Item> newList = new List<Item> { newItem1, newItem2 };
+      // arrange both description arguments then create a new Item for each
+
+      //Act
+      List<Item> result = Item.GetAll();
+      //Create a list containing these Items received from GetAll()
+
+      //Assert
+      CollectionAssert.AreEqual(newList, result);
+      //assert that the return value of GetAll() should be the same as our manually-constructed newList.
     }
     
   }
