@@ -1,0 +1,80 @@
+******** Fields and Properties ********
+
+Fields = private to your class. Store actual data
+Properties = When accessed it uses the underlying field (get and set) but only exposes the contract, which will not be affected by the underlying field.
+
+namespace ProjectName
+{
+  public class ClassName
+  {
+    private string _myField;
+    // ^ this is a field. It is private to your class and stores the actual data.
+
+    public string MyProperty
+    {
+      get
+      {
+        return _myField;
+      }
+      set
+      {
+        _myField = value;
+      }
+    // this is a property. When accessed it uses the underlying field,
+    // but only exposes the contract, which will not be affected by the underlying field
+
+    }
+
+    public int AnotherProperty {get;set;}
+    // This is an AutoProperty (C# 3.0 and higher) - which is a shorthand syntax
+    // used to generate a private field for you
+    }
+  }
+
+
+//It's worth noting that properties are not required to encapsulate fields. There could be no field at all behind the property. It might be a calculation or return a constant or whatever.
+
+
+
+****Private setters allow you to create read-only public or protected properties.
+
+Ex: {get; private set;}
+
+
+
+
+
+
+
+******** Calling on Fields and Properties ********
+
+If class name is Item:
+
+    private string _description;
+^this is the field called _description
+
+    public string Description()
+    {
+      get - pulling
+      {
+        return _description;
+** any instructions can go here as long as you are saying return _description at the end
+      }
+      set - assigning
+      {
+        _description = value;
+** any instructions can go here as long as you are saying _description = “whatever you want to put”
+      }
+    }
+^This is the Property that is exposing the field with custom get and set
+^get is pulling the data for _description
+^set is assigning value for _description
+
+Pulling data in another file:
+
+    Item newItem = new Item();
+	^creates object based on the class
+    newItem.Description =
+    //^calls the set to assign value
+    newItem.Description
+    //^calling get to just receive the data
